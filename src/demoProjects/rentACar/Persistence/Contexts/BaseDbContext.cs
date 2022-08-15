@@ -6,13 +6,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Linq;
 
 namespace Persistence.Contexts
 {
     public class BaseDbContext : DbContext
     {
         protected IConfiguration Configuration { get; set; }
-        public DbSet<SomeFeatureEntity>? SomeFeatureEntities { get; set; }
+        public DbSet<Brand> Brands { get; set; }
        
 
         public BaseDbContext(DbContextOptions dbContextOptions, IConfiguration configuration) : base(dbContextOptions)
@@ -29,17 +30,17 @@ namespace Persistence.Contexts
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<SomeFeatureEntity>(a =>
+            modelBuilder.Entity<Brand>(a =>
             {
-                a.ToTable("SomeFeatureEntities").HasKey(k => k.Id);
+                a.ToTable("Brands").HasKey(k => k.Id);
                 a.Property(p => p.Id).HasColumnName("Id");
                 a.Property(p => p.Name).HasColumnName("Name");
             });
 
 
 
-            SomeFeatureEntity[] someFeatureEntitySeeds = { new(1, "Test 1"), new(2, "Test 2") };
-            modelBuilder.Entity<SomeFeatureEntity>().HasData(someFeatureEntitySeeds);
+            Brand[] brandSeedData = { new(1, "BMW"), new(2, "Mercedes") };
+            modelBuilder.Entity<Brand>().HasData(brandSeedData);
 
            
         }
