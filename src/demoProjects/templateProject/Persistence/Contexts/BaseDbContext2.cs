@@ -9,10 +9,10 @@ using System.Threading.Tasks;
 
 namespace Persistence.Contexts
 {
-    public class BaseDbContext2 : DbContext
+    public class BaseDbContext : DbContext
     {
         
            
-        }
+        
     }
 }
