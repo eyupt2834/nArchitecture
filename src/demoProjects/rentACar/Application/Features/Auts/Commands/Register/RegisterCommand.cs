@@ -59,7 +59,7 @@ namespace Application.Features.Auts.Commands.Register
 
                 RegisteredDto registeredDto = new()
                 {
-                    RefreshToken = createdRefreshToken,
+                    RefreshToken = addedRefreshToken,
                     AccessToken = createdAccessToken
                 };
 
